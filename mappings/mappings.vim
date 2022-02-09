@@ -1,2 +1,2 @@
-
+nmap zb :NERDTreeToggle<CR> 
 
