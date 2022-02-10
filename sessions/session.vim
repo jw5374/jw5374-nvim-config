@@ -13,30 +13,9 @@ argglobal
 set stal=2
 tabnew
 tabnew
+tabnew
 tabrewind
-argglobal
-if bufexists("term://~/AppData/Local/nvim//23452:C:/Windows/system32/cmd.exe") | buffer term://~/AppData/Local/nvim//23452:C:/Windows/system32/cmd.exe | else | edit term://~/AppData/Local/nvim//23452:C:/Windows/system32/cmd.exe | endif
-if &buftype ==# 'terminal'
-  silent file term://~/AppData/Local/nvim//23452:C:/Windows/system32/cmd.exe
-endif
-balt term://~/AppData/Local/nvim//23452:C:/Windows/system32/cmd.exe
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-let s:l = 8 - ((7 * winheight(0) + 19) / 39)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 8
-normal! 034|
-lcd ~/AppData/Local/nvim
-tabnext
-edit ~/AppData/Local/nvim/init.vim
+edit general/settings.vim
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
 set splitbelow splitright
@@ -50,7 +29,6 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 argglobal
-balt ~/AppData/Local/nvim/mappings/mappings.vim
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -61,13 +39,46 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 4 - ((3 * winheight(0) + 19) / 39)
+let s:l = 1 - ((0 * winheight(0) + 14) / 29)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 4
+keepjumps 1
 normal! 0
-lcd ~/AppData/Local/nvim
+lcd ~/AppData/Local/nvim/general
+tabnext
+edit ~/AppData/Local/nvim-data/plugged/vim-lighthaus/colors/lighthaus.vim
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+argglobal
+balt ~/AppData/Local/nvim-data/plugged/vim-lighthaus/colors/lighthaus.vim
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 186 - ((6 * winheight(0) + 10) / 21)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 186
+normal! 0
+lcd ~/AppData/Local/nvim-data/plugged/vim-lighthaus/colors
 tabnext
 edit ~/CodeProjects/CompSciClasses/WebDevelopment/MAMP/webdev/assignments/macro_02/script.js
 let s:save_splitbelow = &splitbelow
@@ -83,7 +94,7 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 argglobal
-balt ~/CodeProjects/CompSciClasses/OOP/HelloWorld.java
+balt ~/CodeProjects/CompSciClasses/WebDevelopment/MAMP/webdev/assignments/macro_02/script.js
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -94,24 +105,66 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 40 - ((16 * winheight(0) + 19) / 39)
+let s:l = 3 - ((2 * winheight(0) + 10) / 21)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 40
-normal! 07|
+keepjumps 3
+normal! 012|
 lcd ~/CodeProjects/CompSciClasses/WebDevelopment/MAMP/webdev/assignments/macro_02
-tabnext 2
+tabnext
+edit ~/CodeProjects/SmartIDShoptaki/Smartid-app/reactnative_mobile/components/database/datafetch.js
+let s:save_splitbelow = &splitbelow
+let s:save_splitright = &splitright
+set splitbelow splitright
+let &splitbelow = s:save_splitbelow
+let &splitright = s:save_splitright
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
+argglobal
+balt ~/CodeProjects/SmartIDShoptaki/Smartid-app/reactnative_mobile/android/build.gradle
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 70 - ((14 * winheight(0) + 14) / 29)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 70
+normal! 010|
+lcd ~/CodeProjects/SmartIDShoptaki/Smartid-app/reactnative_mobile/components/database
+tabnext 1
 set stal=1
-badd +4 ~/AppData/Local/nvim/init.vim
-badd +23 term://~/AppData/Local/nvim//21676:C:/Windows/system32/cmd.exe
-badd +43 ~/CodeProjects/CompSciClasses/WebDevelopment/MAMP/webdev/assignments/macro_02/script.js
-badd +1 ~/AppData/Local/nvim/coc-settings.json
+badd +86 ~/AppData/Local/nvim/vim-plug/plugs.vim
+badd +1 ~/AppData/Local/nvim-data/plugged/vim-lighthaus/colors/lighthaus.vim
+badd +1 ~/CodeProjects/CompSciClasses/WebDevelopment/MAMP/webdev/assignments/macro_02/script.js
+badd +70 ~/CodeProjects/SmartIDShoptaki/Smartid-app/reactnative_mobile/components/database/datafetch.js
+badd +0 ~/AppData/Local/nvim/vim-plug/vim-plug/themes/lighthaus.vim
+badd +7 ~/AppData/Local/Temp/nvimrzjH9Y/7
+badd +1 ~/AppData/Local/nvim/vim-plug/themes/lighthaus.vim
+badd +967 ~/AppData/Local/nvim-data/plugged/lightline.vim/doc/lightline.txt
+badd +1 ~/AppData/Local/nvim/vim-plug/vim-plug/autoload/plug.vim
+badd +1 ~/CodeProjects/CompSciClasses/WebDevelopment/MAMP/webdev/assignments/macro_02/style.css
+badd +1 ~/AppData/Local/nvim/vim-plug/autoload/plug.vim
+badd +9 ~/CodeProjects/CompSciClasses/WebDevelopment/MAMP/webdev/assignments/macro_02/index.html
+badd +5 ~/AppData/Local/nvim/init.vim
+badd +1 ~/AppData/Local/nvim/autoload/plug.vim
 badd +2 ~/CodeProjects/CompSciClasses/OOP/HelloWorld.java
-badd +16 ~/AppData/Local/nvim/general/settings.vim
-badd +24 ~/CodeProjects/CompSciClasses/WebDevelopment/MAMP/webdev/assignments/macro_02/index.html
-badd +68 ~/AppData/Local/nvim/vim-plug/plugs.vim
-badd +23 ~/CodeProjects/CompSciClasses/WebDevelopment/MAMP/webdev/assignments/macro_02/style.css
+badd +23 term://~/AppData/Local/nvim//21676:C:/Windows/system32/cmd.exe
+badd +1 ~/AppData/Local/nvim/coc-settings.json
+badd +13 ~/AppData/Local/nvim/general/settings.vim
 badd +67 ~/CodeProjects/CompSciClasses/WebDevelopment/MAMP/webdev/index.html
 badd +24 ~/CodeProjects/KringleKonfidential/frontend/scripts/script.js
 badd +1 ~/AppData/Local/nvim-data/plugged/nvim-treesitter/lockfile.json
@@ -130,13 +183,39 @@ badd +1 term://~/AppData/Local/nvim//20376:/
 badd +1 term://~/AppData/Local/nvim//14564:C:/Windows/system32/cmd.exe
 badd +1 term://~/AppData/Local/nvim//14780:++curwin
 badd +1 term://~/AppData/Local/nvim//26528:C:/Windows/system32/cmd.exe
-badd +8 ~/AppData/Local/nvim/NERD_tree_2
-badd +11 ~/CodeProjects/CompSciClasses/WebDevelopment/MAMP/webdev/assignments/macro_02/NERD_tree_3
 badd +1 term://~/AppData/Local/nvim//8412:C:/Windows/system32/cmd.exe
 badd +12 term://~/CodeProjects/CompSciClasses/WebDevelopment/MAMP/webdev//16520:C:/Windows/system32/cmd.exe
 badd +1 term://~/CodeProjects/CompSciClasses/WebDevelopment/MAMP/webdev//23284:C:/Windows/system32/cmd.exe
-badd +0 term://~/AppData/Local/nvim//23452:C:/Windows/system32/cmd.exe
+badd +8 term://~/AppData/Local/nvim//23452:C:/Windows/system32/cmd.exe
 badd +1 ~/AppData/Local/nvim/mappings/mappings.vim
+badd +1 ~/AppData/Local/nvim/.gitignore
+badd +2 ~/AppData/Local/nvim-data/plugged/vim-lighthaus/assets/airline.png
+badd +230 ~/CodeProjects/SmartIDShoptaki/Smartid-app/reactnative_mobile/components/signup.js
+badd +6 ~/CodeProjects/CompSciClasses/WebDevelopment/MAMP/webdev/assignments/macro_02/NERD_tree_5
+badd +85 ~/CodeProjects/SmartIDShoptaki/Smartid-app/reactnative_mobile/components/confirmation.js
+badd +50 ~/CodeProjects/SmartIDShoptaki/Smartid-app/reactnative_mobile/components/docCapture.js
+badd +19 ~/CodeProjects/SmartIDShoptaki/Smartid-app/reactnative_mobile/android/build.gradle
+badd +46 ~/CodeProjects/SmartIDShoptaki/Smartid-app/reactnative_mobile/components/dashboard.js
+badd +121 ~/CodeProjects/SmartIDShoptaki/Smartid-app/reactnative_mobile/components/login.js
+badd +4 ~/CodeProjects/SmartIDShoptaki/Dashboard-backend/routes/users/index.js
+badd +16 ~/CodeProjects/SmartIDShoptaki/Dashboard-backend/routes/users/../../lib/jwt.js
+badd +23 ~/CodeProjects/SmartIDShoptaki/Dashboard-backend/routes/users/../../lib/./sessions.js
+badd +6 ~/CodeProjects/SmartIDShoptaki/Dashboard-backend/routes/users/../../lib/./../db/sessions.js
+badd +4 ~/CodeProjects/SmartIDShoptaki/Dashboard-backend/routes/users/./insertUserHandler.js
+badd +6 ~/CodeProjects/SmartIDShoptaki/Dashboard-backend/routes/auth/index.js
+badd +24 ~/CodeProjects/SmartIDShoptaki/Dashboard-backend/routes/auth/./requestOTP.js
+badd +1 ~/CodeProjects/SmartIDShoptaki/Dashboard-backend/routes/auth/./verifyOTP.js
+badd +7 ~/CodeProjects/SmartIDShoptaki/Dashboard-backend/routes/auth/./login.js
+badd +1 ~/CodeProjects/SmartIDShoptaki/Dashboard-backend/routes/users/uploadKycDetails.js
+badd +36 ~/CodeProjects/SmartIDShoptaki/Dashboard-backend/routes/users/../../lib/kycModule/kyc.js
+badd +28 ~/CodeProjects/SmartIDShoptaki/Dashboard-backend/routes/users/../../db/users.js
+badd +18 ~/CodeProjects/SmartIDShoptaki/Smartid-app/reactnative_mobile/components/home/settings.js
+badd +1 term://~/CodeProjects/CompSciClasses/WebDevelopment/MAMP/webdev/assignments/macro_02//9940:C:/Windows/system32/cmd.exe
+badd +60 term://~/CodeProjects/SmartIDShoptaki/Smartid-app//14348:C:/Windows/system32/cmd.exe
+badd +22 ~/CodeProjects/SmartIDShoptaki/Smartid-app/reactnative_mobile/android/gradle.properties
+badd +1 ~/CodeProjects/SmartIDShoptaki/Smartid-app/reactnative_mobile/android/settings.gradle
+badd +1 ~/CodeProjects/SmartIDShoptaki/Smartid-app/reactnative_mobile/android/local.properties
+badd +15 term://~/CodeProjects/SmartIDShoptaki/Smartid-app/reactnative_mobile/components/database//18512:C:/Windows/system32/cmd.exe
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif
@@ -150,7 +229,6 @@ if filereadable(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
 set hlsearch
-nohlsearch
 let g:this_session = v:this_session
 let g:this_obsession = v:this_session
 doautoall SessionLoadPost
