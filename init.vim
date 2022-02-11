@@ -1,7 +1,13 @@
-source C:\Users\aweso\AppData\Local\nvim\general\settings.vim
-source C:\Users\aweso\AppData\Local\nvim\mappings\mappings.vim
-source C:\Users\aweso\AppData\Local\nvim\vim-plug\plugs.vim
-source C:\Users\aweso\AppData\Local\nvim\themes\lighthaus.vim
+let g:nvim_config_root = stdpath('config')
+let g:config_file_list = ['general\settings.vim',
+    \ 'mappings\mappings.vim',
+    \ 'vim-plug\plugs.vim',
+    \ 'themes\lighthaus.vim'
+    \ ]
+
+for f in g:config_file_list
+    execute 'source ' . g:nvim_config_root . '\' . f
+endfor
 
 " cursors
 highlight nCursor guibg=#00A356 guifg=cyan
