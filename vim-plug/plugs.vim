@@ -14,14 +14,18 @@ Plug 'preservim/nerdtree' |
     \ Plug 'Xuyuanp/nerdtree-git-plugin' |
     \ Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-obsession'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'akinsho/toggleterm.nvim'
+Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'karb94/neoscroll.nvim'
+
+" themes
 Plug '4513ECHO/vim-colors-hatsunemiku'
 Plug 'ulwlu/abyss.vim'
 Plug 'jsit/toast.vim'
 Plug 'novasenco/nokto'
 Plug 'lighthaus-theme/vim-lighthaus'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'akinsho/toggleterm.nvim'
-Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'tomasiser/vim-code-dark'
 
 call plug#end()
 
@@ -159,3 +163,20 @@ require("toggleterm").setup {
 }
 EOF
 
+" Neoscroll
+lua <<EOF
+require('neoscroll').setup({
+    -- All these keys will be mapped to their corresponding default scrolling animation
+    mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>',
+                '<C-y>', '<C-e>'},
+    hide_cursor = true,          -- Hide cursor while scrolling
+    stop_eof = true,             -- Stop at <EOF> when scrolling downwards
+    use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
+    respect_scrolloff = false,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
+    cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
+    easing_function = cubic,       -- Default easing function
+    pre_hook = nil,              -- Function to run before the scrolling animation starts
+    post_hook = nil,             -- Function to run after the scrolling animation ends
+    performance_mode = false,    -- Disable "Performance Mode" on all buffers.
+})
+EOF
