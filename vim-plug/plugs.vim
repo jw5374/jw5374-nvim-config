@@ -76,6 +76,7 @@ let g:coc_global_extensions = [
   \ 'coc-css',
   \ 'coc-emmet',
   \ 'coc-html',
+  \ 'coc-discord-rpc',
   \ ] 
 let g:coc_default_semantic_highlight_groups = 1
 

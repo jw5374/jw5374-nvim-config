@@ -5,6 +5,6 @@ for f in g:config_file_list
     execute 'source ' . g:nvim_config_root . '\' . f
 endfor
 
-execute 'GuiFont! Iosevka\ NF:h14'
+execute 'GuiFont! Iosevka\ NF:h16'
 GuiTabline 0
 
