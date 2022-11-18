@@ -1,8 +1,9 @@
+let g:python3_host_prog = 'C:/Python310/python'
 let g:nvim_config_root = stdpath('config')
 let g:config_file_list = ['general\settings.vim',
     \ 'mappings\mappings.vim',
     \ 'vim-plug\plugs.vim',
-    \ 'themes\lighthaus.vim'
+    \ 'themes\codedark.vim'
     \ ]
 
 for f in g:config_file_list
