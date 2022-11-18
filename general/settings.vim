@@ -20,5 +20,5 @@ filetype plugin on
 set cursorline              " highlight current cursorline
 set ttyfast                 " Speed up scrolling in Vim
 
-autocmd BufEnter * if &buftype !=? 'terminal' | lcd %:p:h | endif " sets cwd when entering window
+" autocmd BufEnter * if &buftype !=? 'terminal' | lcd %:p:h | endif " sets cwd when entering window
 
