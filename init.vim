@@ -3,7 +3,7 @@ let g:nvim_config_root = stdpath('config')
 let g:config_file_list = ['general\settings.vim',
     \ 'mappings\mappings.vim',
     \ 'vim-plug\plugs.vim',
-    \ 'themes\codedark.vim'
+    \ 'themes\gruber.vim'
     \ ]
 
 for f in g:config_file_list

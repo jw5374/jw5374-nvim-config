@@ -14,7 +14,7 @@ Plug 'preservim/nerdtree' |
     \ Plug 'Xuyuanp/nerdtree-git-plugin' |
     \ Plug 'ryanoasis/vim-devicons'
 " Plug 'tpope/vim-obsession'
-" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Plug 'akinsho/toggleterm.nvim'
 Plug 'lukas-reineke/indent-blankline.nvim'
 " Plug 'karb94/neoscroll.nvim'
@@ -26,6 +26,7 @@ Plug 'jsit/toast.vim'
 Plug 'novasenco/nokto'
 Plug 'lighthaus-theme/vim-lighthaus'
 Plug 'tomasiser/vim-code-dark'
+Plug 'https://gitlab.com/madyanov/gruber.vim'
 
 call plug#end()
 
