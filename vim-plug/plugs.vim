@@ -14,7 +14,7 @@ Plug 'preservim/nerdtree' |
     \ Plug 'Xuyuanp/nerdtree-git-plugin' |
     \ Plug 'ryanoasis/vim-devicons'
 " Plug 'tpope/vim-obsession'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Plug 'akinsho/toggleterm.nvim'
 Plug 'lukas-reineke/indent-blankline.nvim'
 " Plug 'karb94/neoscroll.nvim'
