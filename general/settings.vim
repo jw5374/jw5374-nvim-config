@@ -19,6 +19,8 @@ set clipboard=unnamedplus   " using system clipboard
 filetype plugin on
 set cursorline              " highlight current cursorline
 set ttyfast                 " Speed up scrolling in Vim
+set list
+set listchars=tab:→·
 
 " autocmd BufEnter * if &buftype !=? 'terminal' | lcd %:p:h | endif " sets cwd when entering window
 
