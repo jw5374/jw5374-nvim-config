@@ -48,6 +48,30 @@ Plug 'https://gitlab.com/madyanov/gruber.vim'
 
 call plug#end()
 
+" LSP Zero
+lua <<EOF
+local lsp = require('lsp-zero')
+
+lsp.ensure_installed({
+  'tsserver',
+  'eslint',
+  'sumneko_lua',
+  'pylsp',
+  'rust_analyzer'
+})
+
+lsp.preset('recommended')
+lsp.setup()
+
+-- current system does not allow for the mason.providers.registry-api
+require("mason").setup {
+	providers = {
+		"mason.providers.client",
+		"mason.providers.registry-api",
+	}
+}
+EOF
+
 " Lightline
 " separator works with Iosevka NF font
 let g:lightline = {
@@ -86,7 +110,6 @@ command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse']}, <bang>0)
 
 " treesitter
-
 lua <<EOF
 require('nvim-treesitter.configs').setup {
   -- A list of parser names, or "all"
