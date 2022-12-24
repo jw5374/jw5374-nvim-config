@@ -21,6 +21,5 @@ set cursorline              " highlight current cursorline
 set ttyfast                 " Speed up scrolling in Vim
 set list
 set listchars=tab:→·
-
-" autocmd BufEnter * if &buftype !=? 'terminal' | lcd %:p:h | endif " sets cwd when entering window
+set scrolloff=8             " maintain lines when scrolling
 

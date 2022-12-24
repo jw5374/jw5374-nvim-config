@@ -16,6 +16,8 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'lukas-reineke/indent-blankline.nvim'
 " Plug 'karb94/neoscroll.nvim'
 
+Plug 'mbbill/undotree'
+
 " ***********LSP Zero
 " LSP Support
 Plug 'neovim/nvim-lspconfig'
@@ -57,7 +59,8 @@ lsp.ensure_installed({
   'eslint',
   'sumneko_lua',
   'pylsp',
-  'rust_analyzer'
+  'rust_analyzer',
+  'jdtls'
 })
 
 lsp.preset('recommended')
@@ -113,7 +116,7 @@ command! -bang -nargs=? -complete=dir Files
 lua <<EOF
 require('nvim-treesitter.configs').setup {
   -- A list of parser names, or "all"
-  ensure_installed = { "javascript", "python", "markdown", "lua", "rust", "vim" },
+  ensure_installed = { "java", "javascript", "python", "markdown", "lua", "rust", "vim" },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
