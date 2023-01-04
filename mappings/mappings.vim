@@ -3,6 +3,7 @@ let mapleader = " "
 
 " General mappings
 inoremap <A-j> <Esc>
+vnoremap <A-j> <Esc>
 nmap <A-z> :set wrap!<CR>
 
 " center when page scrolling
