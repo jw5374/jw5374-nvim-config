@@ -60,7 +60,6 @@ local lspconfig = require('lspconfig')
 lsp.ensure_installed({
   'tsserver',
   'eslint',
-  'sumneko_lua',
   'pylsp',
   'rust_analyzer',
   'jdtls'
@@ -96,6 +95,18 @@ end
 lspconfig.clangd_esp.setup({})
 
 lsp.setup()
+
+local cmp = require('cmp')
+
+cmp.setup({
+  sources = {
+    {name = 'nvim_lsp'},
+    {name = 'buffer'},
+  },
+  mapping = {
+    ['<CR>'] = cmp.mapping.confirm({select = false}),
+  }
+})
 
 -- current system does not allow for the mason.providers.registry-api
 require("mason").setup {
