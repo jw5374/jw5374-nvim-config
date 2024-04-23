@@ -55,6 +55,7 @@ call plug#end()
 " LSP Zero
 lua <<EOF
 local lsp = require('lsp-zero')
+local lspconfig = require('lspconfig')
 
 lsp.ensure_installed({
   'tsserver',
@@ -66,6 +67,34 @@ lsp.ensure_installed({
 })
 
 lsp.preset('recommended')
+
+lspconfig.clangd.setup({
+--	cmd = { "C:\\Espressif\\tools\\esp-clang\\16.0.1-fe4f10a809\\esp-clang\\bin\\clang.exe", vim.fn.expand('%') },
+--	root_dir = function(fname)
+--		return vim.loop.cwd()
+--	end,
+	filetypes = { '.nothing' }
+})
+
+lspconfig.arduino_language_server.setup({
+	cmd = {"arduino-language-server", "-cli-config", "C:\\Users\\EverydayToothbrsuh\\AppData\\Local\\Arduino15\\arduino-cli.yaml"}
+})
+
+local lsp_configurations = require('lspconfig.configs')
+
+if not lsp_configurations.clangd_esp then
+  lsp_configurations.clangd_esp = {
+    default_config = {
+      name = 'clangd-esp',
+      cmd = {'C:\\Users\\EverydayToothbrsuh\\AppData\\Local\\nvim-data\\mason\\bin\\clangd-esp.cmd'},
+      filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
+      root_dir = require('lspconfig.util').root_pattern('.clangd', '.clang-tidy', '.clang-format', 'compile_commands.json', 'compile_flags.txt', 'configure.ac', '.git')
+    }
+  }
+end
+
+lspconfig.clangd_esp.setup({})
+
 lsp.setup()
 
 -- current system does not allow for the mason.providers.registry-api
