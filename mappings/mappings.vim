@@ -5,6 +5,8 @@ let mapleader = " "
 inoremap <A-j> <Esc>
 vnoremap <A-j> <Esc>
 nmap <A-z> :set wrap!<CR>
+nmap <A-o> :bnext<CR>
+nmap <A-i> :bprevious<CR>
 
 " center when page scrolling
 nnoremap <C-d> <C-d>zz
