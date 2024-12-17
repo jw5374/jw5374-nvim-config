@@ -7,7 +7,7 @@ endif
 set background=dark
 let g:colors_name = "gruber"
 
-" Colors
+" Colors: Xterm color numbers
 let s:black      = ["#1c1c1c", "234"]
 let s:lightblack = ["#262626", "235"]
 let s:darkgray   = ["#444444", "238"]
@@ -16,7 +16,8 @@ let s:white      = ["#e4e4e4", "254"]
 
 let s:red     = ["#ff5f5f", "203"]
 let s:green   = ["#87d75f", "113"]
-let s:yellow  = ["#ffd700", "220"]
+let s:gold    = ["#ffd700", "220"]
+let s:yellow  = ["#ffff5f", "227"]
 let s:blue    = ["#87afd7", "110"]
 let s:magenta = ["#afafd7", "146"]
 let s:cyan    = ["#afd7af", "151"]
@@ -65,7 +66,7 @@ endfunction
 let s:fg       = { "fg": s:white }
 let s:comment  = { "fg": s:brown }
 let s:preproc  = { "fg": s:cyan }
-let s:keyword  = { "fg": s:yellow, "style": "bold" }
+let s:keyword  = { "fg": s:gold, "style": "bold" }
 let s:type     = { "fg": s:yellow }
 let s:function = { "fg": s:blue }
 let s:literal  = { "fg": s:magenta }
@@ -114,7 +115,7 @@ highlight! link TermCursor  Cursor
 call s:hl("CursorLine",     { "bg": s:lightblack })
 highlight! link CursorColumn CursorLine
 
-call s:hl("CursorLineNr",   { "style": "bold" })
+call s:hl("CursorLineNr",   { "fg": s:gold, "style": "bold" })
 
 " Line numbers
 call s:hl("LineNr",         { "fg": s:gray })
@@ -126,7 +127,7 @@ call s:hl("StatusLineNC",   { "fg": s:gray, "bg": s:lightblack })
 
 " Search
 call s:hl("Search",         { "fg": s:white, "bg": s:gray })
-call s:hl("IncSearch",      { "fg": s:black, "bg": s:yellow, "style": "bold" })
+call s:hl("IncSearch",      { "fg": s:black, "bg": s:gold, "style": "bold" })
 highlight! link CurSearch IncSearch
 
 " Completion
@@ -141,7 +142,7 @@ call s:hl("TabLine",        { "fg": s:gray, "bg": s:lightblack })
 highlight! link TabLineFill TabLine
 
 call s:hl("TabLineSel",     { "fg": s:white, "style": "bold,italic" })
-call s:hl("Title",          { "fg": s:yellow, "style": "bold" })
+call s:hl("Title",          { "fg": s:gold, "style": "bold" })
 
 " Diff
 call s:hl("DiffAdd",        { "fg": s:green })
@@ -153,7 +154,7 @@ call s:hl("DiffText",       { "style": "bold" })
 call s:hl("ModeMsg",        { "style": "bold" })
 call s:hl("MsgSeparator",   { "fg": s:gray })
 call s:hl("ErrorMsg",       { "fg": s:red })
-call s:hl("WarningMsg",     { "fg": s:yellow })
+call s:hl("WarningMsg",     { "fg": s:gold })
 call s:hl("MoreMsg",        { "fg": s:green })
 call s:hl("Question",       { "fg": s:green })
 
@@ -169,7 +170,7 @@ call s:hl("FoldColumn",     { "fg": s:brown })
 
 " Diagnostic
 call s:hl("DiagnosticError",{ "fg": s:red })
-call s:hl("DiagnosticWarn", { "fg": s:yellow })
+call s:hl("DiagnosticWarn", { "fg": s:gold })
 call s:hl("DiagnosticInfo", { "fg": s:blue })
 call s:hl("DiagnosticHint", { "fg": s:gray })
 
@@ -186,7 +187,7 @@ call s:hl("WinBar",         { "fg": s:magenta, "style": "bold" })
 highlight! link WinBarNC    WinBar
 
 " Misc
-call s:hl("MatchParen",     { "fg": s:yellow, "style": "bold" })
+call s:hl("MatchParen",     { "fg": s:gold, "style": "bold" })
 call s:hl("QuickFixLine",   { "bg": s:gray, "style": "bold" })
 call s:hl("SpecialKey",     { "fg": s:magenta })
 call s:hl("Conceal",        { "fg": s:magenta })
