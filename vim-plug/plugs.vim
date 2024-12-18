@@ -28,7 +28,6 @@ Plug 'williamboman/mason-lspconfig.nvim'
 " Autocompletion
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-nvim-lsp'
 " ***********
 
@@ -81,7 +80,6 @@ cmp.setup({
   sources = {
     {name = 'nvim_lsp'},
     {name = 'buffer'},
-    {name = 'path'},
   },
   mapping = {
     ['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item(), {'i','c'}),
