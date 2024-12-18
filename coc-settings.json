@@ -1,6 +1,0 @@
-{
-    "suggest.noselect": false,
-    "rpc.buttonEnabled": false,
-    "rpc.detailsViewing": "{file_name} - {current_line}:{current_column} Total Lines: {total_lines}"
-}
-

@@ -3,12 +3,13 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
 " or                                , { 'branch': '0.1.x' }
 
+Plug 'stevearc/oil.nvim'
+
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-startify'
-Plug 'ryanoasis/vim-devicons'
 
 " requires C compiler
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -18,7 +19,7 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm install' }
 
-" ***********LSP Zero
+" ***********Completion/LSP
 " LSP Support
 Plug 'neovim/nvim-lspconfig'
 Plug 'williamboman/mason.nvim'
@@ -28,14 +29,7 @@ Plug 'williamboman/mason-lspconfig.nvim'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
-Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-nvim-lua'
-
-"  Snippets
-Plug 'L3MON4D3/LuaSnip'
-Plug 'rafamadriz/friendly-snippets'
-
 " ***********
 
 " themes
@@ -87,12 +81,12 @@ cmp.setup({
   sources = {
     {name = 'nvim_lsp'},
     {name = 'buffer'},
+    {name = 'path'},
   },
   mapping = {
     ['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item(), {'i','c'}),
     ['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item(), {'i','c'}),
     ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-    ['<CR>'] = cmp.mapping.confirm({select = false}),
   }
 })
 
@@ -143,6 +137,11 @@ end
 
 --lspconfig.clangd_esp.setup({})
 
+EOF
+
+" Oil.nvim
+lua <<EOF
+require("oil").setup()
 EOF
 
 " Lightline
