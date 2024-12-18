@@ -21,6 +21,7 @@ filetype plugin on
 set cursorline              " highlight current cursorline
 set ttyfast                 " Speed up scrolling in Vim
 set list
-set listchars=tab:→·
+set listchars=tab:→·,space:·
 set scrolloff=8             " maintain lines when scrolling
 
+set grepformat=%f:%l:%c:%m

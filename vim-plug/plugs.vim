@@ -1,26 +1,20 @@
 call plug#begin()
-" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-" Plug 'junegunn/fzf.vim'
-
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
 " or                                , { 'branch': '0.1.x' }
+
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-startify'
-Plug 'preservim/nerdtree' |
-    \ Plug 'Xuyuanp/nerdtree-git-plugin' |
-    \ Plug 'ryanoasis/vim-devicons'
+Plug 'ryanoasis/vim-devicons'
 
 " requires C compiler
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
+" indent line markers
 Plug 'lukas-reineke/indent-blankline.nvim'
-" Plug 'karb94/neoscroll.nvim'
-
-Plug 'mbbill/undotree'
 
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm install' }
 
@@ -41,42 +35,93 @@ Plug 'hrsh7th/cmp-nvim-lua'
 "  Snippets
 Plug 'L3MON4D3/LuaSnip'
 Plug 'rafamadriz/friendly-snippets'
-Plug 'VonHeikemen/lsp-zero.nvim'
 
 " ***********
 
 " themes
-Plug '4513ECHO/vim-colors-hatsunemiku'
-" Plug 'ulwlu/abyss.vim'
-Plug 'jsit/toast.vim'
-Plug 'novasenco/nokto'
-Plug 'lighthaus-theme/vim-lighthaus'
-Plug 'tomasiser/vim-code-dark'
-Plug 'https://gitlab.com/madyanov/gruber.vim'
+Plug 'lighthaus-theme/vim-lighthaus' " for lightline
+" Plug 'https://gitlab.com/madyanov/gruber.vim' bitbucket not accessible publically :(
 
 call plug#end()
 
 " LSP Zero
 lua <<EOF
-local lsp = require('lsp-zero')
 local lspconfig = require('lspconfig')
 
-lsp.ensure_installed({
-  'tsserver',
-  'eslint',
-  'pylsp',
-  'rust_analyzer',
-  'jdtls'
+-- Reserve a space in the gutter
+-- This will avoid an annoying layout shift in the screen
+vim.opt.signcolumn = 'yes'
+
+-- Add cmp_nvim_lsp capabilities settings to lspconfig
+-- This should be executed before you configure any language server
+local lspconfig_defaults = lspconfig.util.default_config
+lspconfig_defaults.capabilities = vim.tbl_deep_extend(
+  'force',
+  lspconfig_defaults.capabilities,
+  require('cmp_nvim_lsp').default_capabilities()
+)
+
+-- This is where you enable features that only work
+-- if there is a language server active in the file
+vim.api.nvim_create_autocmd('LspAttach', {
+  desc = 'LSP actions',
+  callback = function(event)
+    local opts = {buffer = event.buf}
+
+    vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
+    vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
+    vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
+    vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
+    vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
+    vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
+    vim.keymap.set('n', 'gs', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
+    vim.keymap.set('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
+    vim.keymap.set({'n', 'x'}, '<F3>', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
+    vim.keymap.set('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+  end,
 })
 
-lsp.preset('recommended')
+local cmp = require('cmp')
+
+cmp.setup({
+  sources = {
+    {name = 'nvim_lsp'},
+    {name = 'buffer'},
+  },
+  mapping = {
+    ['<C-n>'] = cmp.mapping(cmp.mapping.select_next_item(), {'i','c'}),
+    ['<C-p>'] = cmp.mapping(cmp.mapping.select_prev_item(), {'i','c'}),
+    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+    ['<CR>'] = cmp.mapping.confirm({select = false}),
+  }
+})
+
+-- current system does not allow for the mason.providers.registry-api
+require("mason").setup {
+	PATH = "prepend",
+	providers = {
+		"mason.providers.client",
+		"mason.providers.registry-api",
+	}
+}
+
+require('mason-lspconfig').setup({
+  -- Replace the language servers listed here
+  -- with the ones you want to install
+  ensure_installed = {'clangd', 'pylsp', 'eslint', 'gopls'},
+  handlers = {
+    function(server_name)
+      require('lspconfig')[server_name].setup({})
+    end,
+  }
+})
 
 lspconfig.clangd.setup({
 --	cmd = { "C:\\Espressif\\tools\\esp-clang\\16.0.1-fe4f10a809\\esp-clang\\bin\\clang.exe", vim.fn.expand('%') },
 --	root_dir = function(fname)
 --		return vim.loop.cwd()
 --	end,
-	filetypes = { '.nothing' }
+--	filetypes = { '.nothing' }
 })
 
 lspconfig.arduino_language_server.setup({
@@ -96,30 +141,8 @@ if not lsp_configurations.clangd_esp then
   }
 end
 
-lspconfig.clangd_esp.setup({})
+--lspconfig.clangd_esp.setup({})
 
-lsp.setup()
-
-local cmp = require('cmp')
-
-cmp.setup({
-  sources = {
-    {name = 'nvim_lsp'},
-    {name = 'buffer'},
-  },
-  mapping = {
-    ['<CR>'] = cmp.mapping.confirm({select = false}),
-  }
-})
-
--- current system does not allow for the mason.providers.registry-api
-require("mason").setup {
-	PATH = "prepend",
-	providers = {
-		"mason.providers.client",
-		"mason.providers.registry-api",
-	}
-}
 EOF
 
 " Lightline
@@ -142,6 +165,19 @@ let g:lightline = {
       \ 'component_function': {
       \   'gitbranch': 'FugitiveHead'
       \ },
+      \ 'mode_map': {
+        \ 'n' : 'N',
+        \ 'i' : 'I',
+        \ 'R' : 'R',
+        \ 'v' : 'V',
+        \ 'V' : 'VL',
+        \ "\<C-v>": 'VB',
+        \ 'c' : 'C',
+        \ 's' : 'S',
+        \ 'S' : 'SL',
+        \ "\<C-s>": 'SB',
+        \ 't': 'T',
+      \ },
   \ }
 
 " Lighthaus
@@ -150,14 +186,10 @@ let g:lighthaus_vsplit_line_light = 1
 " GitGutter
 let g:gitgutter_async = 0
 
-" NERDTree
-let NERDTreeShowBookmarks = 1
-let g:NERDTreeGitStatusWithFlags = 1 
-
 " fzf
-command! FZF call fzf#run(fzf#wrap({'options': '--reverse'}))
-command! -bang -nargs=? -complete=dir Files
-    \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse']}, <bang>0)
+" command! FZF call fzf#run(fzf#wrap({'options': '--reverse'}))
+" command! -bang -nargs=? -complete=dir Files
+"    \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse']}, <bang>0)
 
 " treesitter
 lua <<EOF
@@ -283,32 +315,11 @@ let g:mkdp_theme = 'dark'
 " ****************
 
 " indent blankline
-" lua <<EOF
-" vim.opt.list = true
-" vim.opt.listchars:append("space:⋅")
-
-" require("indent_blankline").setup {
-"     space_char_blankline = " ",
-"     show_current_context = true,
-"     show_current_context_start = true,
-" }
-" EOF
-
-" Neoscroll
-" lua <<EOF
-" require('neoscroll').setup({
-"     -- All these keys will be mapped to their corresponding default scrolling animation
-"     mappings = {'<C-u>', '<C-d>', '<C-b>', '<C-f>',
-"                 '<C-y>', '<C-e>'},
-"     hide_cursor = true,          -- Hide cursor while scrolling
-"     stop_eof = true,             -- Stop at <EOF> when scrolling downwards
-"     use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
-"     respect_scrolloff = false,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
-"     cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
-"     easing_function = cubic,       -- Default easing function
-"     pre_hook = nil,              -- Function to run before the scrolling animation starts
-"     post_hook = nil,             -- Function to run after the scrolling animation ends
-"     performance_mode = false,    -- Disable "Performance Mode" on all buffers.
-" })
-" EOF
-
+lua <<EOF
+require("ibl").setup{
+	scope = {
+		char = '|',
+		enabled = true
+	}
+}
+EOF

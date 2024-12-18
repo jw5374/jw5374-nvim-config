@@ -18,4 +18,5 @@ set guicursor=n-c:block-nCursor
 set guicursor+=v:block-vCursor
 set guicursor+=i:block-iCursor
 set guicursor+=i:blinkwait50-blinkoff50-blinkon1000
+set notermguicolors
 

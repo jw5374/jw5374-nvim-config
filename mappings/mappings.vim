@@ -2,11 +2,12 @@
 let mapleader = " "
 
 " General mappings
-inoremap <A-j> <Esc>
-vnoremap <A-j> <Esc>
 nmap <A-z> :set wrap!<CR>
-nmap <A-o> :bnext<CR>
-nmap <A-i> :bprevious<CR>
+nmap <A-o> :bprevious<CR>
+nmap <A-i> :bnext<CR>
+nmap <A-Q> :copen<CR>
+nmap <A-O> :cprevious<CR>
+nmap <A-I> :cnext<CR>
 
 " center when page scrolling
 nnoremap <C-d> <C-d>zz
@@ -32,18 +33,14 @@ nnoremap <leader>Y "+Y
 nnoremap <leader>d "_d
 vmap <leader>d "_d
 
-" NERDTree 
-nmap zb :NERDTreeToggle<CR> 
-
-" FZF
-" nmap <leader>f :FZF<CR>
-
 " Find files using Telescope command-line sugar.
 nnoremap <leader>f <cmd>Telescope find_files<cr>
 nnoremap <leader>g <cmd>Telescope live_grep<cr>
 nnoremap <leader>s <cmd>Telescope grep_string<cr>
 nnoremap <leader>b <cmd>Telescope buffers<cr>
 nnoremap <leader>h <cmd>Telescope help_tags<cr>
+nnoremap <leader>r <cmd>Telescope lsp_references<cr>
+nnoremap <leader>ld <cmd>Telescope diagnostics<cr>
 
 " [https://github.com/nvim-telescope/telescope.nvim?tab=readme-ov-file#pickers]
 " builtin.buffers -> Lists open buffers in current neovim instance

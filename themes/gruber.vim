@@ -10,6 +10,7 @@ let g:colors_name = "gruber"
 " Colors: Xterm color numbers
 let s:black      = ["#1c1c1c", "234"]
 let s:lightblack = ["#262626", "235"]
+let s:darkergray = ["#303030", "236"]
 let s:darkgray   = ["#444444", "238"]
 let s:gray       = ["#626262", "241"]
 let s:white      = ["#e4e4e4", "254"]
@@ -177,6 +178,7 @@ call s:hl("DiagnosticHint", { "fg": s:gray })
 " Indentation
 call s:hl("ColorColumn",    { "bg": s:lightblack })
 call s:hl("NonText",        { "fg": s:darkgray })
+call s:hl("Whitespace",     { "fg": s:darkergray })
 
 " Splits
 call s:hl("VertSplit",      { "fg": s:gray })
