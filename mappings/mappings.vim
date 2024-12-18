@@ -5,9 +5,14 @@ let mapleader = " "
 nmap <A-z> :set wrap!<CR>
 nmap <A-o> :bprevious<CR>
 nmap <A-i> :bnext<CR>
-nmap <A-Q> :copen<CR>
+nmap <A-q> :copen<CR>
+nmap <A-Q> :cclose<CR>
 nmap <A-O> :cprevious<CR>
 nmap <A-I> :cnext<CR>
+nnoremap <A-H> <C-w>h
+nnoremap <A-J> <C-w>j
+nnoremap <A-K> <C-w>k
+nnoremap <A-L> <C-w>l
 
 " center when page scrolling
 nnoremap <C-d> <C-d>zz
