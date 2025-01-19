@@ -9,14 +9,25 @@ nmap <A-q> :copen<CR>
 nmap <A-Q> :cclose<CR>
 nmap <A-O> :cprevious<CR>
 nmap <A-I> :cnext<CR>
+"" go to previous change in changelist
+nnoremap <A-;> g;
+"" go to next change in changelist
+nnoremap <A-,> g,
+"" change buffer split focus
 nnoremap <A-H> <C-w>h
 nnoremap <A-J> <C-w>j
 nnoremap <A-K> <C-w>k
 nnoremap <A-L> <C-w>l
+"" display full filepath under statusline
+nnoremap <C-g> 1<C-g>
 
 " center when page scrolling
+"" scroll half page
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
+"" scroll single line
+nnoremap <C-j> 1<C-d>zz
+nnoremap <C-k> 1<C-u>zz
 nnoremap n nzz
 nnoremap N Nzz
 nnoremap } }zz
