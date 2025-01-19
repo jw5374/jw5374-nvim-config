@@ -26,8 +26,8 @@ nnoremap <C-g> 1<C-g>
 nnoremap <C-d> <C-d>zz
 nnoremap <C-u> <C-u>zz
 "" scroll single line
-nnoremap <C-j> 1<C-d>zz
-nnoremap <C-k> 1<C-u>zz
+nnoremap <C-j> jzz
+nnoremap <C-k> kzz
 nnoremap n nzz
 nnoremap N Nzz
 nnoremap } }zz
