@@ -2,8 +2,7 @@ let g:python3_host_prog = 'C:/Python310/python'
 let g:nvim_config_root = stdpath('config')
 let g:config_file_list = ['general\settings.vim',
     \ 'mappings\mappings.vim',
-    \ 'vim-plug\plugs.vim',
-    \ 'themes\gruber.vim'
+    \ 'vim-plug\plugs.vim'
     \ ]
 
 for f in g:config_file_list
@@ -20,3 +19,4 @@ set guicursor+=i:block-iCursor
 set guicursor+=i:blinkwait50-blinkoff50-blinkon1000
 set notermguicolors
 
+colorscheme mytheme_wip

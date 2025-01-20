@@ -37,6 +37,9 @@ nnoremap { {zz
 vnoremap J :m '>+1<CR>gv=gv
 vnoremap K :m '<-2<CR>gv=gv
 
+" use visual selection as search input
+vnoremap / "sy/<C-r>s
+
 " preserve clipboard replace paste
 vmap <leader>p "_dP
 

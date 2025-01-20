@@ -32,7 +32,7 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 " ***********
 
 " themes
-Plug 'lighthaus-theme/vim-lighthaus' " for lightline
+" Plug 'lighthaus-theme/vim-lighthaus' " for lightline
 " Plug 'https://gitlab.com/madyanov/gruber.vim' bitbucket not accessible publically :(
 
 call plug#end()
@@ -146,7 +146,7 @@ EOF
 " Lightline
 " separator works with Iosevka NF font
 let g:lightline = {
-      \ 'colorscheme': 'lighthaus',
+      \ 'colorscheme': 'mytheme_wip',
       \ 'separator': { 'left': '', 'right': '' }, 
       \ 'subseparator': { 'left': '', 'right': '' },
       \ 'active': {
@@ -193,7 +193,7 @@ let g:gitgutter_async = 0
 lua <<EOF
 require('nvim-treesitter.configs').setup {
   -- A list of parser names, or "all"
-  ensure_installed = { "javascript", "python", "markdown", "lua", "vim" },
+  ensure_installed = { "javascript", "python", "markdown", "lua", "vim", "comment" },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
