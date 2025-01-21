@@ -8,6 +8,7 @@ set background=dark
 let g:colors_name = "mytheme_wip"
 
 " Colors: Xterm color numbers
+"" Grayscale
 let s:darkerblack = ["#080808", "232"]
 let s:black       = ["#1c1c1c", "234"]
 let s:lightblack  = ["#262626", "235"]
@@ -65,17 +66,17 @@ endfunction
 " Test highlighting with `:source $VIMRUNTIME/syntax/hitest.vim`
 " and `:help group-name`
 
-let s:fg       = { "fg":    s:white }
-let s:comment  = { "fg":    s:brown }
-let s:preproc  = { "fg":    s:cyan }
-let s:keyword  = { "fg":    s:gold, "style": "bold" }
-let s:type     = { "fg":    s:yellow }
-let s:function = { "fg":    s:blue }
-let s:literal  = { "fg":    s:magenta }
-let s:string   = { "fg":    s:green }
-let s:char     = { "fg":    s:cyan }
-let s:ital     = { "style": "italic" }
-let s:bold     = { "style": "bold" }
+let s:fg       =            { "fg": s:white }
+let s:comment  =            { "fg": s:brown }
+let s:preproc  =            { "fg": s:cyan }
+let s:keyword  =            { "fg": s:gold, "style": "bold" }
+let s:type     =            { "fg": s:yellow }
+let s:function =            { "fg": s:blue }
+let s:literal  =            { "fg": s:magenta }
+let s:string   =            { "fg": s:green }
+let s:char     =            { "fg": s:cyan }
+let s:ital     =            { "style": "italic" }
+let s:bold     =            { "style": "bold" }
 
 " Modes
 call s:hl("Normal",         { "fg": s:white, "bg": s:darkerblack })
@@ -215,46 +216,48 @@ call s:hl("NvimInternalError", { "fg": s:black, "bg": s:red })
 let s:lighthaus_vim_v='1.0.0'
 
 
-let s:lh01 = s:darkerblack " ['#21252D', '234']
-let s:lh02 = ['#00BFA4', '43']
-let s:lh03 = ['#FFFADE', '230']
-let s:lh04 = ['#090B26', '233']
-let s:lh05 = ['#50C16E', '71']
-let s:lh06 = ['#ED722E', '208']
-let s:lh07 = ['#FF5050', '203']
-let s:lh08 = ['#CCCCCC', '188']
-let s:lh09 = ['#FC2929', '196']
-let s:lh10 = ['#FF4D00', '202']
+let s:lhbg  = s:darkerblack " ['#21252D', '234']
+let s:lhnfg = ['#00BFA4', '43']
+let s:lhifg = ['#50C16E', '71']
+let s:lhvfg = ['#ED722E', '208']
+let s:lhrfg = ['#FF5050', '203']
+let s:lh03  = ['#FFFADE', '230']
+let s:lh04  = ['#090B26', '233']
+let s:lh08  = ['#CCCCCC', '188']
+let s:lh09  = ['#FC2929', '196']
+let s:lh10  = ['#FF4D00', '202']
 
 
 let s:p = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {}}
 
+" Example format -> let s:p.{mode}.{where} = [ [ {guifg}, {guibg}, {ctermfg}, {ctermbg} ], ... ]
+" Each nested array is associated with a component section in the lightline
+" init config
+let s:p.normal.left     = [ [ s:lhbg, s:lhnfg ], [ s:lhnfg, s:lhbg ] ]
+let s:p.normal.middle   = [ [ s:lhnfg, s:lhbg ] ]
+let s:p.normal.right    = [ [ s:lhbg, s:lhnfg ], [ s:lhnfg, s:lhbg ] ]
+let s:p.normal.error    = [ [ s:lh09, s:lhbg ] ]
+let s:p.normal.warning  = [ [ s:lhrfg, s:lhbg ] ]
 
-let s:p.normal.left = [ [ s:lh01, s:lh02 ], [ s:lh02, s:lh01 ] ]
-let s:p.normal.middle = [ [ s:lh02, s:lh01 ] ]
-let s:p.normal.right = [ [ s:lh01, s:lh02 ], [ s:lh01, s:lh02 ] ]
-let s:p.normal.warning = [ [ s:lh07, s:lh01 ] ]
-let s:p.normal.error = [ [ s:lh09, s:lh01 ] ]
+let s:p.inactive.left   = [ [ s:lhbg, s:lh08 ], [ s:lhifg, s:lhbg ] ]
+let s:p.inactive.middle = [ [ s:lhifg, s:lhbg ] ]
+let s:p.inactive.right  = [ [ s:lhifg, s:lhbg ], [ s:lhifg, s:lhbg ], [ s:lhifg, s:lhbg ] ]
 
-let s:p.inactive.left =  [ [ s:lh01, s:lh08 ], [ s:lh05, s:lh01 ] ]
-let s:p.inactive.middle = [ [ s:lh05, s:lh01 ] ]
-let s:p.inactive.right = [ [ s:lh05, s:lh01 ], [ s:lh05, s:lh01 ] ]
+let s:p.insert.left     = [ [ s:lhbg, s:lhifg ], [ s:lhifg, s:lhbg ] ]
+let s:p.insert.middle   = [ [ s:lhbg, s:lhifg ], [ s:lhbg, s:lhifg ] ]
+let s:p.insert.right    = [ [ s:lhbg, s:lhifg ], [ s:lhifg, s:lhbg ], [ s:lhifg, s:lhbg ] ]
 
-let s:p.insert.left = [ [ s:lh01, s:lh05 ], [ s:lh05, s:lh01 ] ]
-let s:p.insert.middle = [ [ s:lh05, s:lh01 ], [ s:lh05, s:lh01 ] ]
-let s:p.insert.right = [ [ s:lh01, s:lh05 ], [ s:lh05, s:lh01 ] ]
+let s:p.replace.left    = [ [ s:lhbg, s:lhrfg ], [ s:lhrfg, s:lhbg ] ]
+let s:p.replace.middle  = [ [ s:lhbg, s:lhrfg ], [ s:lhbg, s:lhrfg ] ]
+let s:p.replace.right   = [ [ s:lhbg, s:lhrfg ], [ s:lhrfg, s:lhbg ], [ s:lhrfg, s:lhbg ] ]
 
-let s:p.replace.left = [ [ s:lh01, s:lh07 ], [ s:lh07, s:lh01 ] ]
-let s:p.replace.middle = [ [ s:lh07, s:lh01 ], [ s:lh07, s:lh01 ] ]
-let s:p.replace.right = [ [ s:lh01, s:lh07 ], [ s:lh07, s:lh01 ] ]
+let s:p.visual.left     = [ [ s:lhbg, s:lhvfg ], [ s:lhvfg, s:lhbg ] ]
+let s:p.visual.middle   = [ [ s:lhbg, s:lhvfg ], [ s:lhbg, s:lhvfg ] ]
+let s:p.visual.right    = [ [ s:lhbg, s:lhvfg ], [ s:lhvfg, s:lhbg ], [ s:lhvfg, s:lhbg ] ]
 
-let s:p.visual.left = [ [ s:lh01, s:lh06 ], [ s:lh06, s:lh01 ] ]
-let s:p.visual.middle = [ [ s:lh06, s:lh01 ], [ s:lh06, s:lh01 ] ]
-let s:p.visual.right = [ [ s:lh01, s:lh06 ], [ s:lh06, s:lh01 ] ]
-
-let s:p.tabline.left = [ [ s:lh08, s:lh01 ] ]
-let s:p.tabline.middle = [ [ s:lh08, s:lh01 ] ]
-let s:p.tabline.right = [ [ s:lh09, s:lh01 ] ]
-let s:p.tabline.tabsel = [ [ s:lh10, s:lh04 ] ]
+let s:p.tabline.left    = [ [ s:lh08, s:lhbg ] ]
+let s:p.tabline.middle  = [ [ s:lh08, s:lhbg ] ]
+let s:p.tabline.right   = [ [ s:lh09, s:lhbg ] ]
+let s:p.tabline.tabsel  = [ [ s:lh10, s:lh04 ] ]
 
 let g:lightline#colorscheme#{g:colors_name}#palette = lightline#colorscheme#flatten(s:p)
