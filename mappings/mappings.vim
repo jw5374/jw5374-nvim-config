@@ -73,3 +73,7 @@ nnoremap <leader>ld <cmd>Telescope diagnostics<cr>
 " builtin.lsp_implementations -> Goto the implementation of the word under the cursor if there's only one, otherwise show all options in Telescope
 " builtin.lsp_definitions -> Goto the definition of the word under the cursor, if there's only one, otherwise show all options in Telescope
 " builtin.lsp_type_definitions -> Goto the definition of the type of the word under the cursor, if there's only one, otherwise show all options in Telescope
+
+
+" Twilight
+nnoremap <leader>twi <cmd>Twilight

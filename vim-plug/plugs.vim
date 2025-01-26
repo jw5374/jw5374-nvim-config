@@ -19,6 +19,8 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm install' }
 
+Plug 'folke/twilight.nvim',
+
 " ***********Completion/LSP
 " LSP Support
 Plug 'neovim/nvim-lspconfig'
@@ -319,5 +321,12 @@ require("ibl").setup{
 		char = '|',
 		enabled = true
 	}
+}
+EOF
+
+" Twilight
+lua <<EOF
+require('twilight').setup{
+	context = 20
 }
 EOF
