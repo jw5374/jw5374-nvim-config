@@ -76,4 +76,4 @@ nnoremap <leader>ld <cmd>Telescope diagnostics<cr>
 
 
 " Twilight
-nnoremap <leader>twi <cmd>Twilight
+nnoremap <leader>twi <cmd>Twilight<cr>
