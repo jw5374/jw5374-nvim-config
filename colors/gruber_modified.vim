@@ -5,7 +5,7 @@ if exists("syntax_on")
 endif
 
 set background=dark
-let g:colors_name = "mytheme_wip"
+let g:colors_name = "gruber_modified"
 
 " Colors: Xterm color numbers
 "" Grayscale
@@ -17,18 +17,6 @@ let s:darkgray    = ["#444444", "238"]
 let s:gray        = ["#626262", "241"]
 let s:white       = ["#e4e4e4", "254"]
 
-"" Blue accent
-let s:lightnavy   = ["#00d7ff", "45"]
-let s:lighternavy = ["#5fffff", "87"]
-
-let s:pine  = ["#5faf87", "72"]
-let s:pink  = ["#d70087", "162"]
-let s:brightpink = ["#ff00af", "199"]
-let s:lightpurple   = ["#875f87", "96"]
-let s:springgreen   = ["#00af5f", "35"]
-
-
-"" Accents
 let s:red     = ["#ff5f5f", "203"]
 let s:green   = ["#87d75f", "113"]
 let s:gold    = ["#ffd700", "220"]
@@ -79,14 +67,14 @@ endfunction
 " and `:help group-name`
 
 let s:fg       =            { "fg": s:white }
-let s:comment  =            { "fg": s:lightpurple }
-let s:preproc  =            { "fg": s:brightpink }
-let s:keyword  =            { "fg": s:lightnavy, "style": "bold" }
-let s:type     =            { "fg": s:lighternavy }
-let s:function =            { "fg": s:pine }
-let s:literal  =            { "fg": s:springgreen }
-let s:string   =            { "fg": s:pink }
-let s:char     =            { "fg": s:brightpink }
+let s:comment  =            { "fg": s:brown }
+let s:preproc  =            { "fg": s:cyan }
+let s:keyword  =            { "fg": s:gold, "style": "bold" }
+let s:type     =            { "fg": s:yellow }
+let s:function =            { "fg": s:blue }
+let s:literal  =            { "fg": s:magenta }
+let s:string   =            { "fg": s:green }
+let s:char     =            { "fg": s:cyan }
 let s:ital     =            { "style": "italic" }
 let s:bold     =            { "style": "bold" }
 
@@ -110,7 +98,7 @@ call s:hl("Float",          s:literal)
 call s:hl("Identifier",     s:fg)
 call s:hl("Function",       s:function)
 call s:hl("Statement",      s:keyword)
-call s:hl("Operator",       s:type)
+call s:hl("Operator",       s:fg)
 call s:hl("PreProc",        s:preproc)
 call s:hl("Type",           s:type)
 call s:hl("Special",        s:type)
@@ -131,7 +119,7 @@ highlight! link TermCursor  Cursor
 call s:hl("CursorLine",     { "bg": s:lightblack })
 highlight! link CursorColumn CursorLine
 
-call s:hl("CursorLineNr",   { "fg": s:lightnavy, "style": "bold" })
+call s:hl("CursorLineNr",   { "fg": s:gold, "style": "bold" })
 
 " Line numbers
 call s:hl("LineNr",         { "fg": s:gray })
@@ -143,13 +131,11 @@ call s:hl("StatusLineNC",   { "fg": s:gray, "bg": s:lightblack })
 
 " Search
 call s:hl("Search",         { "fg": s:white, "bg": s:gray })
-call s:hl("IncSearch",      { "fg": s:black, "bg": s:lightnavy, "style": "bold" })
+call s:hl("IncSearch",      { "fg": s:black, "bg": s:gold, "style": "bold" })
 highlight! link CurSearch IncSearch
 
 " Completion
 call s:hl("Pmenu",          { "fg": s:white, "bg": s:darkgray })
-" call s:hl("PmenuKind",      { "fg": s:white, "bg": s:darkgray })
-" call s:hl("PmenuExtra",     { "fg": s:white, "bg": s:darkgray })
 call s:hl("PmenuSel",       { "fg": s:white, "bg": s:gray, "style": "bold" })
 call s:hl("PmenuSBar",      { "bg": s:darkgray })
 call s:hl("PmenuThumb",     { "bg": s:gray })
@@ -160,21 +146,21 @@ call s:hl("TabLine",        { "fg": s:gray, "bg": s:lightblack })
 highlight! link TabLineFill TabLine
 
 call s:hl("TabLineSel",     { "fg": s:white, "style": "bold,italic" })
-call s:hl("Title",          { "fg": s:lightnavy, "style": "bold" })
+call s:hl("Title",          { "fg": s:gold, "style": "bold" })
 
 " Diff
-call s:hl("DiffAdd",        { "fg": s:pink })
+call s:hl("DiffAdd",        { "fg": s:green })
 call s:hl("DiffDelete",     { "fg": s:red })
-call s:hl("DiffChange",     { "fg": s:pine })
+call s:hl("DiffChange",     { "fg": s:blue })
 call s:hl("DiffText",       { "style": "bold" })
 
 " Messages
 call s:hl("ModeMsg",        { "style": "bold" })
 call s:hl("MsgSeparator",   { "fg": s:gray })
 call s:hl("ErrorMsg",       { "fg": s:red })
-call s:hl("WarningMsg",     { "fg": s:lightnavy })
-call s:hl("MoreMsg",        { "fg": s:pink })
-call s:hl("Question",       { "fg": s:pink })
+call s:hl("WarningMsg",     { "fg": s:gold })
+call s:hl("MoreMsg",        { "fg": s:green })
+call s:hl("Question",       { "fg": s:green })
 
 " Spell
 call s:hl("SpellBad",       { "style": "underline" })
@@ -183,16 +169,16 @@ call s:hl("SpellLocal",     { "style": "undercurl" })
 call s:hl("SpellRare",      { "style": "underdotted" })
 
 " Folding
-call s:hl("Folded",         { "fg": s:lightpurple, "bg": s:lightblack , "style": "italic" })
-call s:hl("FoldColumn",     { "fg": s:lightpurple })
+call s:hl("Folded",         { "fg": s:brown, "bg": s:lightblack , "style": "italic" })
+call s:hl("FoldColumn",     { "fg": s:brown })
 
 " Diagnostic
 call s:hl("DiagnosticError",         { "fg": s:red })
-call s:hl("DiagnosticWarn",          { "fg": s:lightnavy })
-call s:hl("DiagnosticInfo",          { "fg": s:brightpink })
+call s:hl("DiagnosticWarn",          { "fg": s:gold })
+call s:hl("DiagnosticInfo",          { "fg": s:blue })
 call s:hl("DiagnosticHint",          { "fg": s:gray })
 call s:hl("DiagnosticUnderlineError",{ "fg": s:red, "style": "undercurl" })
-call s:hl("DiagnosticUnderlineWarn", { "fg": s:black, "bg": s:lighternavy, "style": "undercurl" })
+call s:hl("DiagnosticUnderlineWarn", { "fg": s:black, "bg": s:yellow, "style": "undercurl" })
 
 " Indentation
 call s:hl("ColorColumn",    { "bg": s:lightblack })
@@ -204,15 +190,15 @@ call s:hl("VertSplit",      { "fg": s:gray })
 call s:hl("WinSeparator",   { "fg": s:gray })
 
 " WinBar
-call s:hl("WinBar",         { "fg": s:springgreen, "style": "bold" })
+call s:hl("WinBar",         { "fg": s:magenta, "style": "bold" })
 highlight! link WinBarNC    WinBar
 
 " Misc
-call s:hl("MatchParen",     { "fg": s:white, "bg": s:pine, "style": "bold" })
+call s:hl("MatchParen",     { "fg": s:gold, "bg": s:blue, "style": "bold" })
 call s:hl("QuickFixLine",   { "bg": s:gray, "style": "bold" })
-call s:hl("SpecialKey",     { "fg": s:springgreen })
-call s:hl("Conceal",        { "fg": s:springgreen })
-call s:hl("Directory",      { "fg": s:pine })
+call s:hl("SpecialKey",     { "fg": s:magenta })
+call s:hl("Conceal",        { "fg": s:magenta })
+call s:hl("Directory",      { "fg": s:blue })
 call s:hl("EndOfBuffer",    { "fg": s:darkergray })
 
 call s:hl("NvimInternalError", { "fg": s:black, "bg": s:red })
