@@ -52,6 +52,8 @@ nnoremap <leader>Y "+Y
 nnoremap <leader>d "_d
 vmap <leader>d "_d
 
+nnoremap <leader>= <cmd>lua vim.lsp.buf.format()<cr>
+
 " Find files using Telescope command-line sugar.
 nnoremap <leader>f <cmd>Telescope find_files<cr>
 nnoremap <leader>g <cmd>Telescope live_grep<cr>
