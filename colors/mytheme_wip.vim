@@ -18,14 +18,15 @@ let s:gray        = ["#626262", "241"]
 let s:white       = ["#e4e4e4", "254"]
 
 "" Blue accent
-let s:lightnavy   = ["#00d7ff", "45"]
-let s:lighternavy = ["#5fffff", "87"]
+let s:lightnavy   = ["#00d7ff", "045"]
+let s:lighternavy = ["#5fffff", "087"]
+let s:orange      = ["#af5f00", "130"]
 
-let s:pine  = ["#5faf87", "72"]
-let s:pink  = ["#d70087", "162"]
-let s:brightpink = ["#ff00af", "199"]
-let s:lightpurple   = ["#875f87", "96"]
-let s:springgreen   = ["#00af5f", "35"]
+let s:pine          = ["#5faf87", "072"]
+let s:pink          = ["#ff0087", "198"]
+let s:brightpink    = ["#ff5fd7", "206"]
+let s:lightpurple   = ["#875f87", "096"]
+let s:springgreen   = ["#00af5f", "035"]
 
 
 "" Accents
@@ -96,7 +97,7 @@ highlight! link NormalFloat Normal
 highlight! link NormalNC    Normal
 highlight! link MsgArea     Normal
 
-call s:hl("Visual",         { "bg": s:gray })
+call s:hl("Visual",         { "bg": s:orange })
 highlight! link VisualNOS   Visual
 
 " Syntax
