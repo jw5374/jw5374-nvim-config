@@ -39,6 +39,10 @@ let s:magenta = ["#afafd7", "146"]
 let s:cyan    = ["#afd7af", "151"]
 let s:brown   = ["#af875f", "137"]
 
+" Link custom treesitter highlight groups
+highlight! link @variable Identifier
+highlight! link @property Constant
+
 function! s:hl(group, attrs) abort
     if has_key(a:attrs, "fg")
         let a:attrs["guifg"] = a:attrs["fg"][0]
@@ -86,7 +90,7 @@ let s:keyword  =            { "fg": s:lightnavy, "style": "bold" }
 let s:type     =            { "fg": s:lighternavy }
 let s:function =            { "fg": s:pine }
 let s:literal  =            { "fg": s:springgreen }
-let s:string   =            { "fg": s:pink }
+let s:string   =            { "fg": s:magenta }
 let s:char     =            { "fg": s:brightpink }
 let s:ital     =            { "style": "italic" }
 let s:bold     =            { "style": "bold" }
@@ -102,7 +106,7 @@ highlight! link VisualNOS   Visual
 
 " Syntax
 call s:hl("Comment",        s:comment)
-call s:hl("Constant",       s:fg)
+call s:hl("Constant",       s:literal)
 call s:hl("String",         s:string)
 call s:hl("Character",      s:char)
 call s:hl("Number",         s:literal)
@@ -164,7 +168,7 @@ call s:hl("TabLineSel",     { "fg": s:white, "style": "bold,italic" })
 call s:hl("Title",          { "fg": s:lightnavy, "style": "bold" })
 
 " Diff
-call s:hl("DiffAdd",        { "fg": s:pink })
+call s:hl("DiffAdd",        { "fg": s:magenta })
 call s:hl("DiffDelete",     { "fg": s:red })
 call s:hl("DiffChange",     { "fg": s:pine })
 call s:hl("DiffText",       { "style": "bold" })
@@ -174,8 +178,8 @@ call s:hl("ModeMsg",        { "style": "bold" })
 call s:hl("MsgSeparator",   { "fg": s:gray })
 call s:hl("ErrorMsg",       { "fg": s:red })
 call s:hl("WarningMsg",     { "fg": s:lightnavy })
-call s:hl("MoreMsg",        { "fg": s:pink })
-call s:hl("Question",       { "fg": s:pink })
+call s:hl("MoreMsg",        { "fg": s:magenta })
+call s:hl("Question",       { "fg": s:magenta })
 
 " Spell
 call s:hl("SpellBad",       { "style": "underline" })
