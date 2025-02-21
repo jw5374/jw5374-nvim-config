@@ -92,6 +92,7 @@ let s:function =            { "fg": s:pine }
 let s:literal  =            { "fg": s:springgreen }
 let s:string   =            { "fg": s:magenta }
 let s:char     =            { "fg": s:brightpink }
+let s:const     =           { "fg": s:pink }
 let s:ital     =            { "style": "italic" }
 let s:bold     =            { "style": "bold" }
 
@@ -106,7 +107,7 @@ highlight! link VisualNOS   Visual
 
 " Syntax
 call s:hl("Comment",        s:comment)
-call s:hl("Constant",       s:literal)
+call s:hl("Constant",       s:const)
 call s:hl("String",         s:string)
 call s:hl("Character",      s:char)
 call s:hl("Number",         s:literal)

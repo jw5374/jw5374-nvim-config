@@ -22,7 +22,7 @@ set cursorline              " highlight current cursorline
 set ttyfast                 " Speed up scrolling in Vim
 set list
 set listchars=tab:→·,space:·
-set scrolloff=8             " maintain lines when scrolling
+" set scrolloff=8             " maintain lines when scrolling
 
 " Folding with treesitter
 set foldmethod=expr

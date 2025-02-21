@@ -1,13 +1,9 @@
 let g:python3_host_prog = 'C:/Python310/python'
 let g:nvim_config_root = stdpath('config')
-let g:config_file_list = ['general\settings.vim',
-    \ 'mappings\mappings.vim',
-    \ 'vim-plug\plugs.vim'
-    \ ]
 
-for f in g:config_file_list
-    execute 'source ' . g:nvim_config_root . '\' . f
-endfor
+execute 'source ' . g:nvim_config_root . '\' . 'general\settings.vim'
+execute 'source ' . g:nvim_config_root . '\' . 'mappings\mappings.vim'
+execute 'source ' . g:nvim_config_root . '\' . 'vim-plug\plugs.vim'
 
 " cursors
 highlight nCursor guibg=#00A356 guifg=cyan
