@@ -11,6 +11,9 @@ Plug 'tpope/vim-surround'
 Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-startify'
 
+" more textobjects
+Plug 'echasnovski/mini.ai'
+
 " requires C compiler
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
@@ -138,6 +141,13 @@ end
 
 --lspconfig.clangd_esp.setup({})
 
+EOF
+
+" Mini.ai textobjects
+lua <<EOF
+require("mini.ai").setup({
+	search_method = 'cover_or_nearest'
+})
 EOF
 
 " Oil.nvim

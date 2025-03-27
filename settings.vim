@@ -31,3 +31,6 @@ set foldlevelstart=99
 
 set grepformat=%f:%l:%c:%m
 set iskeyword-=_            " add characters to stop on when using 'w', 'b', etc.
+
+" properly align cursor line number with relative numbers (right aligning the cursor line number)
+let &stc='%=%{v:relnum?v:relnum:v:lnum} '
